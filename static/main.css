@@ -1,0 +1,22 @@
+body {
+    font-size: 18px;
+}
+div {
+    padding: 20px 10px 20px;
+}
+
+.user {
+    width: 35%;
+    margin-top: 30px;
+}
+.address {
+    width: 50%;
+    margin-top: 30px;
+}
+.totals {
+    margin-top: 40px;
+}
+.pizza_num {
+    margin-top: 40px;
+    width: 35px;
+}
