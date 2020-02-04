@@ -4,19 +4,43 @@ body {
 div {
     padding: 20px 10px 20px;
 }
-
 .user {
     width: 35%;
-    margin-top: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .address {
-    width: 50%;
-    margin-top: 30px;
+    width: 45%;
+    margin-bottom: 30px;
 }
 .totals {
     margin-top: 40px;
 }
 .pizza_num {
     margin-top: 40px;
-    width: 35px;
+    width: 45px;
+}
+.right-toppings {
+    margin-left: 65px;
+}
+img {
+    width: 101px;
+    height: 60px;
+}
+.left-side {
+    float: left;
+}
+.right-side {
+    float: right;
+}
+.orderb {
+    margin-top: 40px;
+    margin-left: 3px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.exit {
+    width: 100%;
+    margin-left: 3px;
+    padding: 10px;
 }

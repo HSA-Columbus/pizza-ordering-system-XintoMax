@@ -23,7 +23,7 @@ def home():
 
 @app.route('/order_placed')
 def order():
-    pass
+    render_template("orderfinish.html")
 
 
 if __name__ == "__main__":

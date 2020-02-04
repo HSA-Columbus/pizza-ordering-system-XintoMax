@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/main.css">
+    <meta charset="UTF-8">
+    <title>Ordering Screen</title>
+    <script>
+        function im(image) {
+        if (image === 'op1')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075532.jpeg';
+        else if (image === 'op2')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075608.jpeg';
+        else if (image === 'op3')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075647.jpeg';
+        else if (image === 'op4')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075751.jpeg';
+        document.getElementById('op').src = image;
+    }
+        function unit_price_set(pizza) {
+        var pizza_num = document.getElementById('pizza_number').value;
+        if (pizza === 'p1' || pizza === 'p2' || pizza === 'p3' || pizza === 'y')
+            pizza = Number(5.50 * pizza_num);
+            if (pizza === 'gp' || pizza === 'mushroom' || pizza === 'tomato' || pizza === 'pickle' || pizza === 'olive')
+                pizza = 5.50 * pizza_num + 0.25;
+            else if (pizza === 'pineapple') {
+                alert('You disgusting human.');
+                pizza = 5.50 * pizza_num + 1;
+            }
+        else if (pizza === 'p4' || pizza === 'y' )
+            pizza ="$" + 6 * pizza_num;
+        document.getElementById("unit_total").value ="$" + pizza;
+    }
+</script>
+</head>
+<body>
+    <div class="main">
+        <form>
+            <div class="div1">
+                <h4>Customer Information</h4>
+                <label for="name">Name: <input class="user" type="text" id="name"></label><br>
+                <label for="address">Address: <input class="address" type="text" id="address"></label><br>
+                    <div class="div1-1">
+                    <label>Pizza Type:</label><br>
+
+                    <input type="radio" checked name="group1" value="input1" id="input1" onClick="im('op1');unit_price_set('p1');">
+                            <label for="input1">Sicilian</label>
+                    <input type="radio" name="group1" value="input2" id="input2" onClick="im('op2');unit_price_set('p2');">
+                            <label for="input2">Marine</label>
+                    <input type="radio" name="group1" value="input3" id="input3" onClick="im('op3');unit_price_set('p3');">
+                            <label for="input3">Neapolitan</label>
+                    <input type="radio" name="group1" value="input4" id="input4" onClick="im('op4');unit_price_set('p4');">
+                            <label for="input4">Mixed</label>
+                    </div>
+                <img id="op" src="https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075532.jpeg" alt="test">
+            </div>
+            <div class="div2">
+                <label>Toppings ($0.25 each):</label><br>
+
+                <input type="checkbox" name="group2" value="gp" id="gp" onClick="unit_price_set('gp')">
+                        <label for="gp">Green Pepper</label>
+                <input class="right-toppings" type="checkbox" name="group2" value="mushroom" id="mushroom" onClick="unit_price_set('mushroom')">
+                        <label for="mushroom">Mushroom</label><br>
+                <input type="checkbox" name="group2" value="tomato" id="tomato" onClick="unit_price_set('tomato')">
+                        <label for="tomato">Tomato</label>
+                <input class="right-toppings" type="checkbox" name="group2" value="input4" id="pickle" onClick="unit_price_set('pickle')">
+                        <label for="pickle">Pickle</label><br>
+                <input type="checkbox" name="group2" value="pineapple" id="pineapple" onClick="unit_price_set('pineapple')">
+                        <label for="pineapple">Pineapple</label>
+                <input class="right-toppings" type="checkbox" name="group2" value="olive" id="olive" onClick="unit_price_set('olive')">
+                        <label for="olive">Olives</label>
+            </div>
+            <div class="left-side">
+                <label for="unit_total">Unit Total: <input class="totals" type="text" readonly id="unit_total" value="$0.0"></label><br>
+                <label for="pizza_number"># of Pizzas: <input class="pizza_num" type="number" id="pizza_number" max="10" placeholder="0-10" onClick="unit_price_set('y')"></label><br>
+                <label for="total">Total: <input class="totals" type="text" id="total" readonly value="$0.0"></label><br>
+                <label for="calorie">Calories: <input class="totals" type="text" id="calorie" readonly value="0.0"></label><br>
+
+            </div>
+            <div class="right-side">
+                <button class="orderb">Insert Order</button>
+                <button class="orderb">New Order</button>
+                <button class="orderb" type="reset">New Customer</button>
+                <button class="orderb">Delete Order</button><br>
+                <button class="exit">Exit</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
