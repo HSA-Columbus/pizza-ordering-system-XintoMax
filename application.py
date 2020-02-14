@@ -21,22 +21,22 @@ def home():
         return render_template("home.html")
 
 
-@app.route('/checkout', methods=['POST'])
-def order():
+@app.route('/filler_arc', methods=['POST'])
+def filler():
+    pizza_in = request.args.get('group1')
+    if pizza_in == 'input1':
+        pizza = "Sicilian"
+        price = "$7"
+    elif pizza_in == 'input2':
+        pizza = "Marine"
+        price = "$7"
+    elif pizza_in == 'input3':
+        pizza = "Neapolitan"
+        price = "$7"
+    elif pizza_in == 'input4':
+        pizza = "Mixed"
+        price = "$8"
     with sqlite3.connect("checkout") as conn:
-        pizza_in = request.args.get('group1')
-        if pizza_in == 'input1':
-            pizza = "Sicilian"
-            price = "$7"
-        elif pizza_in == 'input2':
-            pizza = "Marine"
-            price = "$7"
-        elif pizza_in == 'input3':
-            pizza = "Neapolitan"
-            price = "$7"
-        elif pizza_in == 'input4':
-            pizza = "Mixed"
-            price = "$8"
         command = "INSERT INTO stuff VALUES(?, ?, ?)"
         data_list = []
         data_list.append(pizza)
@@ -44,6 +44,12 @@ def order():
         data_list.append(price)
         conn.execute(command, data_list)
         conn.commit()
+    return render_template("filler.html")
+
+
+@app.route('/checkout', methods=['POST'])
+def order():
+    with sqlite3.connect("checkout") as conn:
         command1 = "SELECT * FROM stuff"
         cursor1 = conn.execute(command1)
         table_assignments = cursor1.fetchall()
