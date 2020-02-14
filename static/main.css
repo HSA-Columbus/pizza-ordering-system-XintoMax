@@ -1,5 +1,5 @@
 body {
-    font-size: 20px;
+    font-size: 19px;
     background-color: deepskyblue;
     margin: 0;
     padding: 0;
@@ -11,10 +11,10 @@ img {
 }
 div.decor-1 {
     text-align: center;
-    padding: 40px;
+    padding: 25px;
     width: auto;
-    height: 70px;
-    font-size: 50px;
+    height: 110px;
+    font-size: 40px;
     background-color: darkblue;
     color: white;
 }
@@ -23,12 +23,13 @@ hr {
     background-color: black;
     border: none;
     margin-top: -10px;
+    margin-bottom: -10px;
 }
 .div1 {
-    padding: 20px 10px 5px;
+    padding: 5px 15px 5px;
 }
 .div2 {
-    padding: 20px 10px 5px;
+    padding: 5px 15px 5px;
 }
 .imgflip {
     transform: scaleX(-1)
@@ -39,11 +40,17 @@ hr {
     margin-bottom: 30px;
 }
 .address {
-    width: 45%;
-    margin-bottom: 30px;
+    width: 40%;
+    margin-bottom: 10px;
 }
-.right-toppings {
-    margin-left: 65px;
+.right-toppings1 {
+    margin-left: 15px;
+}
+.right-toppings2 {
+    margin-left: 61px;
+}
+.right-toppings3 {
+    margin-left: 44px;
 }
 .pizza_num {
     margin-top: 40px;
@@ -52,25 +59,14 @@ hr {
     font-size: 18px;
 }
 .totals {
-    margin-top: 40px;
+    margin-top: 35px;
     height: 25px;
     width: 100px;
     font-size: 18px;
 }
-.left-side {
-    float: left;
-}
-.right-side {
-    float: right;
-}
 .orderb {
-    margin-top: 40px;
-    margin-left: 3px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-left: 5px;
     padding: 10px;
-}
-.exit {
-    width: 100%;
-    margin-left: 3px;
-    padding: 10px;
+    width: 300px;
 }
