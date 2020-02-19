@@ -3,50 +3,27 @@
 <head>
     <link rel="stylesheet" href="../static/main.css">
     <meta charset="UTF-8">
-    <title>Ordering Screen</title>
-    <script>
-        function im(image) {
-        if (image === 'op1')
-            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075532.jpeg';
-        else if (image === 'op2')
-            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075608.jpeg';
-        else if (image === 'op3')
-            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075647.jpeg';
-        else if (image === 'op4')
-            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075751.jpeg';
-        document.getElementById('op').src = image;
-    }
-        var global_price = 0;
-        var global_calorie = 0;
-        var pizza_price = 0;
-        var calorie_count = 0;
-        function pizza_set(pizza, price, calorie) {
-            global_calorie = calorie;
-            global_price = price;
-            pizza_price = price;
-            calorie_count = calorie;
-            document.getElementById("total").value = "$" + price;
-            document.getElementById("calorie").value = calorie;
+    <title>Home</title>
+    <style>
+        h3 {
+            color: white;
+            text-align: center;
+            font-size: 35px;
         }
-        function toppings_set(top, add) {
-            const toppings = document.getElementsByName('group2');
-            var count = 0;
-            if (top === 'gp' || top === 'mush' || top === 'tom' || top === 'pic' || top === 'pa' || top === 'olive') {
-                for (let i = 0; i < toppings.length; i++) {
-                    if (toppings[i].type === "checkbox" && toppings[i].checked === true) {
-                        count++;
-                        global_price = parseFloat(pizza_price) + parseFloat(add) * count;
-                        global_calorie = parseFloat(calorie_count) + parseFloat(20) * count;
-                    } else {
-                        global_price = parseFloat(pizza_price) + parseFloat(add) * count;
-                        global_calorie = parseFloat(calorie_count) + parseFloat(20) * count;
-                    }
-                }
-            }
-            document.getElementById("total").value = "$" + global_price;
-            document.getElementById("calorie").value = global_calorie + '.0';
+        h4 {
+            color: white;
+            text-align: center;
+            font-size: 25px;
         }
-</script>
+        button {
+            background-color: darkblue;
+            color: white;
+            border: 4px solid royalblue;
+            text-align: center;
+            position: absolute;
+            left: 45%
+        }
+    </style>
 </head>
 <body>
 <div class="decor-1">
@@ -55,55 +32,11 @@
     <img class="imgflip" src="https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-25202091416.png" alt="pog2">
 </div>
 <hr>
-    <div class="main">
-        <form action="/" method="post">
-            <div class="div1">
-                <h3>Customer Information</h3>
-                <label for="name">Name: <input class="user" type="text" id="name" required></label><br>
-                <label for="address">Address: <input class="address" type="text" id="address" required></label><br>
-                    <div class="div1-1">
-                    <h3>Pizza Type:</h3>
-
-                    <input type="radio" checked name="group1" value="input1" id="input1" onClick="im('op1');pizza_set('p1', '7.00', '320.0');">
-                            <label for="input1">Sicilian($7) </label>
-                    <input type="radio" name="group1" value="input2" id="input2" onClick="im('op2');pizza_set('p2', '7.00', '200.0');">
-                            <label for="input2">Marine($7)</label>
-                    <input type="radio" name="group1" value="input3" id="input3" onClick="im('op3');pizza_set('p3', '7.00', '800.0');">
-                            <label for="input3">Neapolitan($7)</label>
-                    <input type="radio" name="group1" value="input4" id="input4" onClick="im('op4');pizza_set('p4', '8.00', '2000.0');">
-                            <label for="input4">Mixed($8)</label>
-                    </div>
-                <img id="op" src="https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075532.jpeg" alt="test">
-            </div>
-            <div class="div2">
-                <h3>Toppings ($0.25 each):</h3>
-
-                <input type="checkbox" name="group2" value="gp" id="gp" onClick="toppings_set('gp', '0.25')">
-                        <label for="gp">Green Pepper</label>
-                <input class="right-toppings1" type="checkbox" name="group2" value="mushroom" id="mushroom" onClick="toppings_set('mush', '0.25')">
-                        <label for="mushroom">Mushroom</label><br>
-                <input type="checkbox" name="group2" value="tomato" id="tomato" onClick="toppings_set('tom', '0.25')">
-                        <label for="tomato">Tomato</label>
-                <input class="right-toppings2" type="checkbox" name="group2" value="input4" id="pickle" onClick="toppings_set('pic', '0.25')">
-                        <label for="pickle">Pickle</label><br>
-                <input type="checkbox" name="group2" value="pineapple" id="pineapple" onClick="toppings_set('pa', '0.25')">
-                        <label for="pineapple">Pineapple</label>
-                <input class="right-toppings3" type="checkbox" name="group2" value="olive" id="olive" onClick="toppings_set('olive', '0.25')">
-                        <label for="olive">Olives</label>
-            </div>
-            <div class="div2">
-                <label for="total">Total: <input class="totals" type="text" id="total" readonly value="$0.00"></label><br>
-                <label for="calorie">Calories: <input class="totals" type="text" id="calorie" readonly value="0.0"></label><br>
-                <label>
-                    <input type="submit" name="submit_button" value="Add to order" class="orderb">
-                </label>
-                <button class="orderb" type="reset">New Order</button>
-            </div>
-        </form>
-        <form action="/filler_arc">
-            <button class="orderb" type="submit">Go to Checkout</button>
-        </form>
-    </div>
+<h3>Welcome to Boggers Pizza!</h3>
+<h4>It's Pizza Time.</h4>
+<form action="/order">
+    <button type="submit" value="Pizza_Time">Order Pizza</button>
+</form>
 
 </body>
 </html>
