@@ -8,7 +8,7 @@ order_num = 0
 
 @application.route('/')
 def home():
-    return render_template('/home.html')
+    return render_template("/home.html")
 
 
 @application.route('/order', methods=['GET', 'POST'])
@@ -66,7 +66,7 @@ def delete():
 
 @application.errorhandler(404)
 def error(e):
-    return render_template('/404.html'), 404
+    return render_template("/404.html"), 404
 
 
 if __name__ == "__main__":
