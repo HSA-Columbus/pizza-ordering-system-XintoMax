@@ -2,16 +2,16 @@ import random
 from flask import *
 import sqlite3
 
-app = Flask(__name__)
+application = Flask(__name__)
 order_num = 0
 
 
-@app.route('/')
+@application.route('/')
 def home():
     return render_template('home.html')
 
 
-@app.route('/order', methods=['GET', 'POST'])
+@application.route('/order', methods=['GET', 'POST'])
 def order():
     if request.method == "POST":
         with sqlite3.connect("checkout") as conn:
@@ -39,7 +39,7 @@ def order():
         return render_template("order.html")
 
 
-@app.route('/checkout')
+@application.route('/checkout')
 def checkout():
     with sqlite3.connect("checkout") as conn:
         command1 = "SELECT * FROM stuff"
@@ -48,14 +48,14 @@ def checkout():
     return render_template("checkout.html", table_assignments=table_assignments)
 
 
-@app.route('/finished')
+@application.route('/finished')
 def getmeout():
     global order_num
     order_num += 1
     return render_template("finished.html", order_num=order_num)
 
 
-@app.route('/delete_order')
+@application.route('/delete_order')
 def delete():
     with sqlite3.connect("checkout") as conn:
         command2 = "DELETE FROM stuff"
@@ -64,10 +64,10 @@ def delete():
         return render_template("delete.html", table_assignments=table_assignments)
 
 
-@app.errorhandler(404)
+@application.errorhandler(404)
 def error(e):
     return render_template('404.html'), 404
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    application.run(debug=True)
