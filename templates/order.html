@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/main.css">
+    <meta charset="UTF-8">
+    <title>Ordering Screen</title>
+    <script>
+        function im(image) {
+        if (image === 'op1')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075532.jpeg';
+        else if (image === 'op2')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075608.jpeg';
+        else if (image === 'op3')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075647.jpeg';
+        else if (image === 'op4')
+            image = 'https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075751.jpeg';
+        document.getElementById('op').src = image;
+    }
+        var global_price = 0;
+        var global_calorie = 0;
+        var pizza_price = 0;
+        var calorie_count = 0;
+        function pizza_set(pizza, price, calorie) {
+            global_calorie = calorie;
+            global_price = price;
+            pizza_price = price;
+            calorie_count = calorie;
+            document.getElementById("total").value = "$" + price;
+            document.getElementById("calorie").value = calorie;
+        }
+        function toppings_set(top, add) {
+            const topping = document.getElementById('group2');
+            var count = 0;
+            if (top === 'gp' || top === 'mush' || top === 'tom' || top === 'pic' || top === 'pa' || top === 'olive') {
+                for (let i = 0; i < t.length; i++) {
+                    if (t[i].type === "checkbox" && t[i].checked === true) {
+                        count++;
+                        global_price = parseFloat(pizza_price) + parseFloat(add) * count;
+                        global_calorie = parseFloat(calorie_count) + parseFloat(20) * count;
+                    } else {
+                        global_price = parseFloat(pizza_price) + parseFloat(add) * count;
+                        global_calorie = parseFloat(calorie_count) + parseFloat(20) * count;
+                    }
+                }
+            }
+            document.getElementById("total").value = "$" + global_price.toFixed(2);
+            document.getElementById("calorie").value = global_calorie + '.0';
+        }
+</script>
+</head>
+<body>
+<div>
+<div class="decor-1">
+    <img src="https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-25202091416.png" alt="pog1">
+    Boggers Pizza
+    <img class="imgflip" src="https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-25202091416.png" alt="pog2">
+</div>
+<hr>
+    <div class="main">
+        <form action="/order" method="post">
+            <div class="div1">
+                <h3>Customer Information</h3>
+                <label for="name">Name: <input class="user" type="text" name="name" id="name" required></label><br>
+                <label for="address">Address: <input class="address" type="text" name="address" id="address" required></label><br>
+                    <div class="div1-1">
+                    <h3>Pizza Type:</h3>
+
+                    <input type="radio" checked name="pizza" value="Sicilian" id="input1" onClick="im('op1');pizza_set('p1', '7.00', '320.0');">
+                            <label for="input1">Sicilian($7) </label>
+                    <input type="radio" name="pizza" value="Marine" id="input2" onClick="im('op2');pizza_set('p2', '7.00', '200.0');">
+                            <label for="input2">Marine($7)</label>
+                    <input type="radio" name="pizza" value="Neapolitan" id="input3" onClick="im('op3');pizza_set('p3', '7.00', '800.0');">
+                            <label for="input3">Neapolitan($7)</label>
+                    <input type="radio" name="pizza" value="Mixed" id="input4" onClick="im('op4');pizza_set('p4', '8.00', '2000.0');">
+                            <label for="input4">Mixed($8)</label>
+                    </div>
+                <img id="op" src="https://www.mrfarah.com/assets/html/student-files/student.t.fowsantia-131202075532.jpeg" alt="test">
+            </div>
+            <div class="div2">
+                <h3>Toppings ($0.25 each):</h3>
+
+                <input type="checkbox" name="green_pepper" value="gp" id="t" onClick="toppings_set('gp', '0.25')">
+                        <label for="gp">Green Pepper</label>
+                <input class="right-toppings1" type="checkbox" name="mushroom" value="mushroom" id="t" onClick="toppings_set('mush', '0.25')">
+                        <label for="mushroom">Mushroom</label><br>
+                <input type="checkbox" name="tomato" value="tomato" id="t" onClick="toppings_set('tom', '0.25')">
+                        <label for="tomato">Tomato</label>
+                <input class="right-toppings2" type="checkbox" name="pickle" value="input4" id="t" onClick="toppings_set('pic', '0.25')">
+                        <label for="pickle">Pickle</label><br>
+                <input type="checkbox" name="pineapple" value="pineapple" id="t" onClick="toppings_set('pa', '0.25')">
+                        <label for="pineapple">Pineapple</label>
+                <input class="right-toppings3" type="checkbox" name="olive" value="olive" id="t" onClick="toppings_set('olive', '0.25')">
+                        <label for="olive">Olives</label>
+            </div>
+            <div class="div2">
+                <label for="total">Total: <input class="totals" type="text" name="total" id="total" readonly value="$0.00"></label><br>
+                <label for="calorie">Calories: <input class="totals" type="text" name="calorie" id="calorie" readonly value="0.0"></label><br>
+                <label>
+                    <button class="orderb" type="submit">Add to Order</button>
+                </label>
+                <button class="orderb" type="reset">New Order</button>
+            </div>
+        </form>
+            <div class="div2">
+                <form action="/checkout">
+                    <button class="orderc" type="submit">Go to Checkout</button>
+                </form>
+            </div>
+    </div>
+</body>
+</html>

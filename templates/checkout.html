@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../static/main.css">
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+</head>
+<body>
+<div class="decor-1">
+    <h3>Please confirm if this is this your order:</h3>
+</div>
+<hr>
+<table align="center">
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Pizza</th>
+        <th>Toppings</th>
+        <th>Cost</th>
+        <th>Calories</th>
+    </tr>
+    {%for i in table_assignments%}
+    <tr>
+        {% for x in i %}
+        <td>{{x}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+<div class="div1">
+    <form action="/order">
+        <button class="back" type="submit" value="Order_Screen">Return to Order Screen</button>
+    </form>
+    <form action="/finished">
+        <button class="order" type="submit" value="Order">Place Order</button>
+    </form>
+    <form action="/delete_order">
+        <button class="order" type="submit" value="Delete">Delete Order</button>
+    </form>
+</div>
+</body>
+</html>
