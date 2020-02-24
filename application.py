@@ -8,7 +8,7 @@ order_num = 0
 
 @application.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('/home.html')
 
 
 @application.route('/order', methods=['GET', 'POST'])
@@ -34,9 +34,9 @@ def order():
             data_list.append(request.form["calorie"])
             conn.execute(command, data_list)
             conn.commit()
-        return render_template("order.html")
+        return render_template("/order.html")
     else:
-        return render_template("order.html")
+        return render_template("/order.html")
 
 
 @application.route('/checkout')
@@ -45,14 +45,14 @@ def checkout():
         command1 = "SELECT * FROM stuff"
         cursor1 = conn.execute(command1)
         table_assignments = cursor1.fetchall()
-    return render_template("checkout.html", table_assignments=table_assignments)
+    return render_template("/checkout.html", table_assignments=table_assignments)
 
 
 @application.route('/finished')
 def getmeout():
     global order_num
     order_num += 1
-    return render_template("finished.html", order_num=order_num)
+    return render_template("/finished.html", order_num=order_num)
 
 
 @application.route('/delete_order')
@@ -61,13 +61,13 @@ def delete():
         command2 = "DELETE FROM stuff"
         cursor2 = conn.execute(command2)
         table_assignments = cursor2.fetchall()
-        return render_template("delete.html", table_assignments=table_assignments)
+        return render_template("/delete.html", table_assignments=table_assignments)
 
 
 @application.errorhandler(404)
 def error(e):
-    return render_template('404.html'), 404
+    return render_template('/404.html'), 404
 
 
 if __name__ == "__main__":
-    application.run(debug=True)
+    application.run()
